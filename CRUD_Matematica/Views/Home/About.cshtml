@@ -1,0 +1,104 @@
+﻿@model CRUD_Matematica.ViewModels.AboutViewModel
+
+@{
+    ViewBag.Title = "Matematica";
+}
+
+
+<div class="col-lg-3" style="margin-top:20px">
+    <h2>SUMA</h2>
+    <form method="post" action="@Url.Action("Sumar","Home")">
+        <div class="form-group">
+            <label>Usuario</label>
+            @Html.TextBoxFor(x => x.InputSuma1, new { @class = "form-control onlyNumberDecimal" })
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            @Html.TextBoxFor(x => x.InputSuma2, new { @class = "form-control onlyNumberDecimal" })
+        </div>
+        <button type="submit" class="btn btn-success">Calcular</button>
+        <div class="form-group" style="margin-top:20px">
+            @Html.TextBoxFor(x => x.ResultSuma, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </form>
+</div>
+
+
+<div class="col-lg-3" style="margin-top:20px">
+    <h2>RESTA</h2>
+    <form method="post" action="@Url.Action("Restar","Home")">
+        <div class="form-group">
+            <label>Usuario</label>
+            @Html.TextBoxFor(x => x.InputResta1, new { @class = "form-control onlyNumberDecimal" })
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            @Html.TextBoxFor(x => x.InputResta2, new { @class = "form-control onlyNumberDecimal" })
+        </div>
+        <button type="submit" class="btn btn-success">Calcular</button>
+        <div class="form-group" style="margin-top:20px">
+            @Html.TextBoxFor(x => x.ResultResta, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </form>
+</div>
+<div class="col-lg-3" style="margin-top:20px">
+    <h2>MULTIPLICACION</h2>
+    <form method="post" action="@Url.Action("Multiplicar","Home")">
+        <div class="form-group">
+            <label>Usuario</label>
+            @Html.TextBoxFor(x => x.InputMultiplicacion1, new { @class = "form-control onlyNumberDecimal" })
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            @Html.TextBoxFor(x => x.InputMultiplicacion2, new { @class = "form-control onlyNumberDecimal" })
+        </div>
+        <button type="submit" class="btn btn-success">Calcular</button>
+        <div class="form-group" style="margin-top:20px">
+            @Html.TextBoxFor(x => x.ResultMultiplicacion, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </form>
+</div>
+
+<div class="col-lg-3" style="margin-top:20px">
+    <h2>DIVISIÓN</h2>
+    <form method="post" action="@Url.Action("Dividir","Home")">
+        <div class="form-group">
+            <label>Usuario</label>
+            @Html.TextBoxFor(x => x.InputDivision1, new { @class = "form-control onlyNumberDecimal" })
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            @Html.TextBoxFor(x => x.InputDivision2, new { @class = "form-control onlyNumberDecimal" })
+        </div>
+        <button type="submit" class="btn btn-success">Calcular</button>
+        <div class="form-group" style="margin-top:20px">
+            @Html.TextBoxFor(x => x.ResultDivision, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </form>
+</div>
+
+
+<script>
+    $(document).on("keypress", ".onlyNumberDecimal", function (e) {
+        debugger;
+        if (e.shiftKey == true) {
+            e.preventDefault();
+        }
+        var key = e.keyCode || e.which;
+        if ((key >= 48 && key <= 57) || key == 8 || key == 13 || key == 46) {
+            if (key == 13) { return false; }
+            else {
+                if ($(this).val().indexOf('.') !== -1 && key == 46)
+                    e.preventDefault();
+                return true;
+            }
+        }
+        else { return false; }
+        });
+    });
+</script>
+    
