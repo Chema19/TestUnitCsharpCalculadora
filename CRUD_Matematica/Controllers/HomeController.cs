@@ -46,6 +46,7 @@ namespace CRUD_Matematica.Controllers
             ViewBag.Message = resultado;
             var vm = new AboutViewModel();
             vm.Fill(model.InputSuma1, model.InputSuma2, resultado, "S");
+            Session["mensaje"] = "Success";
             return RedirectToAction("About", "Home", vm);
         }
 
@@ -56,6 +57,7 @@ namespace CRUD_Matematica.Controllers
             ViewBag.Message = resultado;
             var vm = new AboutViewModel();
             vm.Fill(model.InputResta1, model.InputResta2, resultado, "R");
+            Session["mensaje"] = "Success";
             return RedirectToAction("About", "Home", vm);
         }
 
@@ -66,16 +68,22 @@ namespace CRUD_Matematica.Controllers
             ViewBag.Message = resultado;
             var vm = new AboutViewModel();
             vm.Fill(model.InputMultiplicacion1, model.InputMultiplicacion2, resultado, "M");
+            Session["mensaje"] = "Success";
             return RedirectToAction("About", "Home", vm);
         }
 
         [HttpPost]
         public ActionResult Dividir(AboutViewModel model)
         {
+            if (model.InputDivision2 == 0) {
+                Session["mensaje"] = "Error no se puede dividir por cero";
+                return RedirectToAction("About", "Home", model);
+            }
             var resultado = Division(model.InputDivision1, model.InputDivision2);
             ViewBag.Message = resultado;
             var vm = new AboutViewModel();
             vm.Fill(model.InputDivision1, model.InputDivision2, resultado, "D");
+            Session["mensaje"] = "Success";
             return RedirectToAction("About", "Home", vm);
         }
 

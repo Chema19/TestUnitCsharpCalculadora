@@ -4,6 +4,7 @@
     ViewBag.Title = "Matematica";
 }
 
+<h2>Mensaje:  @Session["mensaje"]</h2>
 
 <div class="col-lg-3" style="margin-top:20px">
     <h2>SUMA</h2>
@@ -82,6 +83,7 @@
 </div>
 
 
+@section scripts{
 <script>
     $(document).on("keypress", ".onlyNumberDecimal", function (e) {
         debugger;
@@ -98,7 +100,7 @@
             }
         }
         else { return false; }
-        });
     });
-</script>
     
+</script>
+    }
